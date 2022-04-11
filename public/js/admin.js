@@ -91,4 +91,7 @@ $('#form').on('submit', async function (event) {
         method: "POST",
         body: formfata
     })).json()
+    if(response.status == 200) alert("Post qo'shildi")
+    
+    location.reload()
 })

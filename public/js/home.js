@@ -9,8 +9,7 @@ $('#navbar li').on('click', function () {
 
 $('#cards li').on('click', function () {
     const cardId = $(this).data('id')
-    console.log(cardId);
-    $(`#post`).filter(function () {
+    $(`.post`).filter(function () {
         $(this).toggle($(this).data('id') == cardId).removeClass('hidden')
     })
     $(`#content`).removeClass('hidden')
@@ -21,3 +20,5 @@ $("#backBtn").on('click', function () {
     $('#content').addClass('hidden')
     $('#cards').removeClass('hidden')
 })
+
+$('#navbar li').first().click()

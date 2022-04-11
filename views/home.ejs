@@ -46,7 +46,7 @@
 
             <!-- Posts -->
             <% posts.forEach(post => { %>
-                <div id="post" class="hidden w-3/5 mx-auto" data-id="<%= post.id %>" data-category="<%= post.category %>">
+                <div class="post hidden w-3/5 mx-auto" data-id="<%= post.id %>" data-category="<%= post.category %>">
                     <%- post.html %> 
                 </div>
             <% }) %>

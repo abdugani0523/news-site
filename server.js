@@ -4,24 +4,25 @@ const express = require('express');
 
 // Module imports
 const { port } = require('./config')
-const homeRouter = require('./routes/home')
 const ejs = require('ejs');
+const homeRouter = require('./routes/home')
+const adminRouter = require('./routes/admin')
+
 
 // Server
 const app = express()
-
-// Static
-app.use(express.static('public'))
 
 // Set engine
 app.engine('ejs', ejs.renderFile)
 app.set('view engine', 'ejs')
 
-// Middlewares
 
+// Static
+app.use(express.static('public'))
 
 // Routes
 app.use(homeRouter)
+app.use(adminRouter)
 
 // Run server
 app.listen(port, () => console.log('==>', port))

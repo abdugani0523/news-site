@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/home.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Panel</title>
+</head>
+<body>
+
+    <!-- Container -->
+    <div class="container mx-auto w-3/5 m-6">
+        <h1 class="text-2xl font-bold text-center bg-gray-200 p-3 m-4 border border-gray-300 rounded">Admin Panel</h1>
+            
+        
+        <!-- Form -->
+        <form id="form" class="m-4 p-4 bg-gray-200 border border-gray-300 rounded">
+            <header class="flex flex-row justify-between">
+                <h2 class="w-4/5 text-xl font-bold m-4">New post</h2>
+                <select class="w-1/5 bg-blue-100 px-2 my-2 border border-blue-300 rounded-lg" name="category" id="category">
+                    <% category.forEach(item => { %>
+                        <option value="<%= item.id %>"><%= item.name %> (<%= item.posts %>)</option>
+                    <% }) %>
+                </select>
+            </header>
+        
+                 <!-- Card -->
+            <div class="flex flex-row justify-around m-2 mb-6">
+        
+                <div class="w-1/2 p-4">
+                    <h3 class="text-center font-lg font-medium">Image</h3>
+                    <div class="rounded-lg border-2 border-gray-500">
+                        <div class="w-1/10 mx-auto p-3">
+                            <input id="imageInput" accept="image/*" class="w-full rounded-lg text-gray-700 file:rounded-3 file:border-0 file:px-2 file:text-sm file:font-semibold file:text-blue-700 py-1 px-2 border-2 border-blue-300 rounded-sm outline-1" type="file" placeholder="Image" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-1/2 p-4">
+                    <h3 class="text-center font-lg font-medium">Title</h3>
+                    <div class="rounded-lg border-2 border-gray-500">
+                        <div class="w-1/10 mx-auto p-3">
+                            <input id="titleInput" required class="w-full py-1 px-2 border-2 border-blue-300 rounded-lg outline-1" type="text" placeholder="Title">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post -->
+            
+            <div class="flex flex-row justify-around m-2 mb-6">
+
+                <div class="w-1/2 p-4">
+                    <h3 class="text-center font-lg font-medium">Headers</h3>
+                    <div class="rounded-lg border-2 border-gray-500">
+                        <!-- Option -->
+                        <ul id="headOption" class="flex flex-row justify-start">
+                            <li data-id="0" class="rounded-tl-lg w-1/1 px-3 py-2 text-center hover:bg-blue-300 bg-blue-400">Main head</li>
+                        </ul>
+                        <div id="headInput" class="w-1/10 mx-auto p-3">
+                            <input data-id="0" required class="w-full py-1 px-2 border-2 border-blue-300 rounded-lg outline-1" type="text" placeholder="Main header">
+                        </div>
+                        <button class="ml-3 mb-3 cursor-pointer bg-blue-300 hover:bg-blue-400 px-2 py-1 rounded border border-blue-600" type="button" id="incHead">Add</button>
+                    </div>
+                </div>
+
+                <div class="w-1/2 p-4">
+                    <h3 class="text-center font-lg font-medium">Thumbnail</h3>
+
+                    <div class="rounded-lg border-2 border-gray-500">
+                        <!-- Option -->
+                        <ul id="thumbnail" class="flex flex-row justify-around cursor-pointer">
+                            <li class="rounded-tl-lg w-1/2 px-3 py-2 text-center bg-blue-400" data-id="1">File</li>
+                            <li class="rounded-tr-lg w-1/2 px-3 py-2 text-center hover:bg-blue-300" data-id="2">URL</li>
+                        </ul>
+                        <div id="thumbnailInput" class="w-1/10 mx-auto p-3">
+                            <input id="thumbnailInputFile" accept="image/*" required class="w-full rounded-lg text-gray-700 file:rounded-3 file:border-0 file:px-2 file:text-sm file:font-semibold file:text-blue-700 py-1 px-2 border-2 border-blue-300 rounded-sm outline-1" type="file" placeholder="Image">
+                            <input id="thumbnailInputUrl" class="hidden w-full py-1 px-2 border-2 border-blue-300 rounded-lg outline-1" type="url" placeholder="URL">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Paragraph -->
+            <div class="w-full p-4">
+                <h3 class="text-center font-lg font-medium">Paragraph</h3>
+                <div class="rounded-lg border-2 border-gray-500">
+                    <!-- Option -->
+                    <ul id="paraOption" class="flex flex-row justify-start">
+                        <li data-id="0" class="rounded-tl-lg px-3 py-2 text-center hover:bg-blue-300 bg-blue-400">Main paragraph</li>
+                    </ul>
+                    <div id="paraInput" class="w-1/10 mx-auto p-3">
+                        <textarea data-id="0" required class="w-full py-1 px-2 border-2 border-blue-300 rounded-lg outline-1" type="text" placeholder="Main paragraph"></textarea>
+                    </div>
+                    <button id="incPara" class="ml-3 mb-3 cursor-pointer bg-blue-300 hover:bg-blue-400 px-2 py-1 rounded border border-blue-600" type="button" id="incHead">Add</button>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex flex-row justify-start">
+                <button type="button" class="ml-3 mb-3 cursor-pointer bg-green-300 hover:bg-green-400 px-3 py-2 rounded border border-green-600">Preview</button>
+                <button type="submit" class="ml-3 mb-3 cursor-pointer bg-blue-300 hover:bg-blue-400 px-3 py-2 rounded border border-blue-600">Submit</button>
+            </div>
+        </form>
+        
+
+        <!-- Content -->
+        <div id="content w-3/5 mx-auto" class="hidden">
+
+            <hr class="mb-8">
+        </div>
+    </div>
+
+
+    
+        <!-- h1 - text-2xl font-bold mx-3 my-4 -->
+        <!-- h2 - text-xl font-medium mx-3 my-6 -->
+        <!-- h2 - w-full m-3 rounded-lg -->
+        <!-- p - m-3 -->
+        <!-- Footer -->
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./js/admin.js"></script>
+</body>
+</html>
